@@ -1,2 +1,1 @@
-# BELAJAR
-MUH.YUSUF SMA 16 KONAWE SELATAN
+streamlit run dashboard.py
