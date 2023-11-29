@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 order_reviews = pd.read_csv('https://raw.githubusercontent.com/yusuf601/BELAJAR/main/order_reviews_dataset.csv')
-orders = pd.read_csv('orders_dataset.csv')
+orders = pd.read_csv('https://raw.githubusercontent.com/yusuf601/BELAJAR/main/orders_dataset.csv')
 
 order_reviews.info()
 
