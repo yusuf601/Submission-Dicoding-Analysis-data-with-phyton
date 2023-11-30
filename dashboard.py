@@ -41,11 +41,9 @@ filtered_orders = orders[orders["order_status"] == status]
 st.write(f"Data orders dengan status {status}")
 st.dataframe(filtered_orders)
 
-st.set_page_config(layout="wide")
+st.set_page_config()
 
 with st.container():
-
-
     st.title("Dashboard analisis data ")
 
 # Membuat selectbox untuk memilih nilai k
