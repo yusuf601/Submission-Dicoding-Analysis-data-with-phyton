@@ -109,6 +109,7 @@ with st.container():
         ax.set_title("Rata-Rata Delivery Difference per Customer ID")
         ax.set_xlabel("Customer ID")
         ax.set_ylabel("Delivery Difference")
+        ax.set_xticks(avg_diff.index)
         ax.set_xticklabels(avg_diff.index, rotation=90)
         st.pyplot(fig)
 
@@ -205,5 +206,6 @@ with col2:
     ax.set_title("Rata-Rata Delivery Difference per Customer ID")
     ax.set_xlabel("Customer ID")
     ax.set_ylabel("Delivery Difference")
+    ax.set_xticks(avg_diff.index)
     ax.set_xticklabels(avg_diff.index, rotation=90)
     st.pyplot(fig)
