@@ -41,7 +41,7 @@ filtered_orders = orders[orders["order_status"] == status]
 st.write(f"Data orders dengan status {status}")
 st.dataframe(filtered_orders)
 
-st.set_page_config()
+st.set_page_config(layout="wide")
 
 with st.container():
     st.title("Dashboard analisis data ")
