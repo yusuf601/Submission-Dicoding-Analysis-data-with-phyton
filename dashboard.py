@@ -99,8 +99,8 @@ ax.set_xlabel("review_score")
 ax.set_ylabel("customer_satisfaction")
 ax.set_title("Clustering dengan K-means sederhana")
 st.pyplot(fig)
-endwith(
-    # Membuat kontainer untuk menampilkan data orders
+endwith()
+    # Membuat kontainer untuk menampilkan data orders 
 with st.container():
     # Display order data
     st.write("Data orders")
