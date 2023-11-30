@@ -99,24 +99,37 @@ ax.set_xlabel("review_score")
 ax.set_ylabel("customer_satisfaction")
 ax.set_title("Clustering dengan K-means sederhana")
 st.pyplot(fig)
-
+endwith(
     # Membuat kontainer untuk menampilkan data orders
 with st.container():
-        # Menampilkan data orders
-        st.write("Data orders")
-        st.dataframe(orders)
-        orders["delivery_difference"] = orders["order_delivered_customer_date"] - orders["order_estimated_delivery_date"]
-        st.write("Persentase pesanan yang terkirim")
-        st.write(orders["order_status"].value_counts(normalize=True)["delivered"] * 100)
-        avg_diff = orders.groupby("customer_id")["delivery_difference"].mean()
-        fig, ax = plt.subplots()
-        ax.bar(avg_diff.index, avg_diff.values)
-        ax.set_title("Rata-Rata Delivery Difference per Customer ID")
-        ax.set_xlabel("Customer ID")
-        ax.set_ylabel("Delivery Difference")
-        ax.set_xticklabels(avg_diff.index, rotation=90)
-        st.pyplot(fig)
+    # Display order data
+    st.write("Data orders")
+    st.dataframe(orders.copy())
 
+    # Calculate delivery difference
+    orders["delivery_difference"] = (
+        orders["order_delivered_customer_date"] - orders["order_estimated_delivery_date"]
+    )
+
+    # Display percentage of delivered orders
+    st.write("Persentase pesanan yang terkirim")
+    delivered_percentage = round(
+        orders["order_status"].value_counts(normalize=True)["delivered"] * 100, 2
+    )
+    st.write(f"{delivered_percentage}%")
+
+    # Calculate average delivery difference per customer ID
+    avg_diff = orders.groupby("customer_id")["delivery_difference"].mean()
+
+    # Create a bar chart to visualize average delivery difference
+    fig, ax = plt.subplots()
+    ax.bar(avg_diff.index, avg_diff.values)
+    ax.set_title("Rata-Rata Delivery Difference per Customer ID")
+    ax.set_xlabel("Customer ID")
+    ax.set_ylabel("Delivery Difference")
+    ax.set_xticklabels(avg_diff.index, rotation=90)
+    st.pyplot(fig)
+endwith()
 # Membuat bagian yang dapat diperluas untuk menampilkan data order_reviews
 with st.expander(label="Data order_reviews", expanded=True):
     # Membuat selectbox untuk memilih nilai k
