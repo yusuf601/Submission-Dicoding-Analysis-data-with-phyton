@@ -30,21 +30,17 @@ order_reviews["review_creation_date"] = pd.to_datetime(order_reviews["review_cre
 order_reviews["review_answer_timestamp"] = pd.to_datetime(order_reviews["review_answer_timestamp"])
 
 order_reviews["customer_satisfaction"] = order_reviews.apply(lambda x: "puas" if x["review_score"] >= 4 and x["review_comment_message"] else "tidak puas", axis=1)
+st.set_page_config(layout="wide")
+with st.container():
+    st.title("Dashboard analisis data ")
 # Deklarasikan variabel untuk menyimpan opsi status pesanan
 status_options = orders["order_status"].unique()
-
-# Buat widget untuk memilih status pesanan
+# buat widget untuk memilih status pesanan
 status = st.selectbox("Pilih status pesanan", status_options)
-
 # Tampilkan data orders yang sesuai dengan status yang dipilih
 filtered_orders = orders[orders["order_status"] == status]
 st.write(f"Data orders dengan status {status}")
 st.dataframe(filtered_orders)
-
-st.set_page_config(layout="wide")
-
-with st.container():
-    st.title("Dashboard analisis data ")
 
 # Membuat selectbox untuk memilih nilai k
 k = st.sidebar.selectbox("Pilih nilai k", [2, 3, 4, 5])
